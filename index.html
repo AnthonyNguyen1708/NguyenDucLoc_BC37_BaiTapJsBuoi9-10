@@ -150,6 +150,7 @@
                 <div class="col">
                   <div class="input-group">
                     <input
+                      oninput="searchStaff()"
                       type="text"
                       class="form-control"
                       placeholder="Loại nhân viên"
@@ -369,10 +370,18 @@
               id="btnThemNV"
               type="button"
               class="btn btn-success"
+              data-dismiss="modal"
             >
               Thêm người dùng
             </button>
-            <button id="btnCapNhat" type="button" class="btn btn-success">
+            <button
+              style="display: none"
+              data-dismiss="modal"
+              id="btnCapNhat"
+              type="button"
+              class="btn btn-success"
+              onclick="updateStaff()"
+            >
               Cập nhật
             </button>
             <button
@@ -401,6 +410,8 @@
 
     <script src="./index.js"></script>
     <script src="./model/staffModel.js"></script>
+    <script src="./controller/controller.js"></script>
+    <script src="./validation/validation.js"></script>
     <!-- Wow -->
     <!-- <script src="js/wow.min.js"></script>	
 	<script>
