@@ -1,7 +1,7 @@
 var staffList = [];
 
 addStaff = () => {
-  validateForm();
+  if (!validateForm()) return;
 
   var newStaff = staffInput();
 
@@ -152,5 +152,5 @@ validateForm = () => {
 
   valid = regexRequired(id, "#tbTKNV", "Tài khoản nhân viên");
 
-  console.log(id);
+  return valid;
 };
