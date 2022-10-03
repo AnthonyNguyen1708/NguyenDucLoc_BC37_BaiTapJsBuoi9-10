@@ -1,7 +1,9 @@
 function regexRequired(value, selectorError, name) {
-  if (value.length === 0) {
+  console.log(selectorError);
+  if (value === "") {
     document.querySelector(selectorError).innerHTML =
       name + " không được bỏ trống!";
+    document.querySelector(selectorError).style.display = "block";
     return false;
   }
   document.querySelector(selectorError).innerHTML = "";
@@ -15,6 +17,7 @@ function regexLetter(value, selectorError, name) {
     return true;
   }
   document.querySelector(selectorError).innerHTML = name + " phải là chữ cái!";
+  document.querySelector(selectorError).style.display = "block";
   return false;
 }
 
@@ -28,6 +31,8 @@ function regexEmail(value, selectorError, name) {
   }
   document.querySelector(selectorError).innerHTML =
     name + " không đúng định dạng";
+  document.querySelector(selectorError).style.display = "block";
+  return false;
 }
 
 function regexPassWord(value, selectorError, name) {
@@ -41,6 +46,8 @@ function regexPassWord(value, selectorError, name) {
   document.querySelector(selectorError).innerHTML =
     name +
     " phải từ 6-10 ký tự (chứa ít nhất 1 ký tự số, 1 ký tự in hoa, 1 ký tự đặc biệt)!";
+  document.querySelector(selectorError).style.display = "block";
+  return false;
 }
 
 function regexIdNumber(value, selectorError, name) {
@@ -50,6 +57,7 @@ function regexIdNumber(value, selectorError, name) {
     return true;
   }
   document.querySelector(selectorError).innerHTML = name + " phải là số!";
+  document.querySelector(selectorError).style.display = "block";
   return false;
 }
 
@@ -57,6 +65,7 @@ function regexLength(value, selectorError, name, minLength, maxLength) {
   if (value.length < minLength || value.length > maxLength) {
     document.querySelector(selectorError).innerHTML =
       name + " phải từ " + minLength + " đến " + maxLength + " ký tự!";
+    document.querySelector(selectorError).style.display = "block";
     return false;
   }
   document.querySelector(selectorError).innerHTML = "";
@@ -67,6 +76,7 @@ function regexNumberValue(value, selectorError, name, minValue, maxValue) {
   if (Number(value) < minValue || Number(value) > maxValue) {
     document.querySelector(selectorError).innerHTML =
       name + " phải có giá trị " + minValue + " đến " + maxValue;
+    document.querySelector(selectorError).style.display = "block";
     return false;
   }
   document.querySelector(selectorError).innerHTML = "";

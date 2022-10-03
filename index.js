@@ -144,13 +144,40 @@ validateForm = () => {
   var email = document.getElementById("email").value;
   var password = document.getElementById("password").value;
   var joinDate = document.getElementById("datepicker").value;
-  var salary = document.getElementById("luongCB").value * 1;
+  var salary = document.getElementById("luongCB").value;
   var title = document.getElementById("chucvu").value;
-  var time = document.getElementById("gioLam").value * 1;
+  var time = document.getElementById("gioLam").value;
 
   var valid = true;
 
-  valid = regexRequired(id, "#tbTKNV", "Tài khoản nhân viên");
+  valid &=
+    regexRequired(id, "#tbTKNV", "Tài khoản nhân viên") &&
+    regexIdNumber(id, "#tbTKNV", "Tài khoản nhân viên") &&
+    regexLength(id, "#tbTKNV", "Tài khoản nhân viên", 4, 6);
+
+  valid &=
+    regexRequired(name, "#tbTen", "Tên nhân viên") &&
+    regexLetter(name, "#tbTen", "Tên nhân viên");
+
+  valid &=
+    regexRequired(email, "#tbEmail", "Email") &&
+    regexEmail(email, "#tbEmail", "Email");
+
+  valid &=
+    regexRequired(password, "#tbMatKhau", "Password") &&
+    regexPassWord(password, "#tbMatKhau", "Password");
+
+  valid &= regexRequired(joinDate, "#tbNgay", "Ngày vào làm");
+
+  valid &=
+    regexRequired(salary, "#tbLuongCB", "Lương") &&
+    regexIdNumber(salary, "#tbLuongCB", "Lương") &&
+    regexNumberValue(salary, "#tbLuongCB", "Lương", 1000000, 20000000);
+
+  valid &=
+    regexRequired(time, "#tbGiolam", "Giờ làm") &&
+    regexIdNumber(time, "#tbGiolam", "Giờ làm") &&
+    regexNumberValue(time, "#tbGiolam", "Giờ làm", 80, 200);
 
   return valid;
 };
