@@ -1,42 +1,16 @@
 var staffList = [];
 
 addStaff = () => {
-  //get staff input
-  var id = document.getElementById("tknv").value;
-  var name = document.getElementById("name").value;
-  var email = document.getElementById("email").value;
-  var password = document.getElementById("password").value;
-  var joinDate = document.getElementById("datepicker").value;
-  var salary = document.getElementById("luongCB").value * 1;
-  var title = document.getElementById("chucvu").value;
-  var time = document.getElementById("gioLam").value * 1;
+  validateForm();
 
-  //check staff id
-  for (i = 0; i < staffList.length; i++) {
-    if (staffList[i].id === id) return alert("Mã nhân viên đã tồn tại!");
-  }
+  var newStaff = staffInput();
 
-  //create new staff object
-  var newStaff = new Staff(
-    id,
-    name,
-    email,
-    password,
-    joinDate,
-    salary,
-    title,
-    time
-  );
-
-  //push staff to staffList
   staffList.push(newStaff);
 
-  //render staff
   renderStaff();
 
   setLocal();
 
-  //reset form
   document.getElementById("myForm").reset();
 };
 
@@ -162,4 +136,21 @@ updateStaff = () => {
 
 window.onload = function () {
   getLocal();
+};
+
+validateForm = () => {
+  var id = document.getElementById("tknv").value;
+  var name = document.getElementById("name").value;
+  var email = document.getElementById("email").value;
+  var password = document.getElementById("password").value;
+  var joinDate = document.getElementById("datepicker").value;
+  var salary = document.getElementById("luongCB").value * 1;
+  var title = document.getElementById("chucvu").value;
+  var time = document.getElementById("gioLam").value * 1;
+
+  var valid = true;
+
+  valid = regexRequired(id, "#tbTKNV", "Tài khoản nhân viên");
+
+  console.log(id);
 };

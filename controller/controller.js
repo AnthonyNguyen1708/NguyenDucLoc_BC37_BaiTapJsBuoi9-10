@@ -1,3 +1,31 @@
+staffInput = () => {
+  var id = document.getElementById("tknv").value;
+  var name = document.getElementById("name").value;
+  var email = document.getElementById("email").value;
+  var password = document.getElementById("password").value;
+  var joinDate = document.getElementById("datepicker").value;
+  var salary = document.getElementById("luongCB").value * 1;
+  var title = document.getElementById("chucvu").value;
+  var time = document.getElementById("gioLam").value * 1;
+
+  for (i = 0; i < staffList.length; i++) {
+    if (staffList[i].id === id) return alert("Mã nhân viên đã tồn tại!");
+  }
+
+  var newStaff = new Staff(
+    id,
+    name,
+    email,
+    password,
+    joinDate,
+    salary,
+    title,
+    time
+  );
+
+  return newStaff;
+};
+
 findByID = (staffId) => {
   for (i = 0; i < staffList.length; i++) {
     if (staffList[i].id === staffId) {
