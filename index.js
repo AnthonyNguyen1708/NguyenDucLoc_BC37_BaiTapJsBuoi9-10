@@ -179,5 +179,6 @@ validateForm = () => {
     regexIdNumber(time, "#tbGiolam", "Giờ làm") &&
     regexNumberValue(time, "#tbGiolam", "Giờ làm", 80, 200);
 
+  valid = regexTitle(title, "#tbChucVu", "Chức vụ");
   return valid;
 };

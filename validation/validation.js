@@ -82,3 +82,14 @@ function regexNumberValue(value, selectorError, name, minValue, maxValue) {
   document.querySelector(selectorError).innerHTML = "";
   return true;
 }
+
+function regexTitle(value, selectorError, name) {
+  if (value === "Sếp" || value === "Trưởng phòng" || value === "Nhân viên") {
+    document.querySelector(selectorError).innerHTML = "";
+    return true;
+  } else {
+    document.querySelector(selectorError).innerHTML = "Hãy chọn " + name;
+    document.querySelector(selectorError).style.display = "block";
+    return false;
+  }
+}
